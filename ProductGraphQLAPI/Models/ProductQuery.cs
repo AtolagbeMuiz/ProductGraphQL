@@ -1,4 +1,5 @@
-﻿namespace ProductGraphQLAPI.Models
+﻿
+namespace ProductGraphQLAPI.Models
 {
     public class ProductQuery : ObjectGraphType
     {
@@ -12,6 +13,11 @@
             //This returns a List of ProductType 
             //the "resolve" helps in resolving/casting the custom type returned(Array of Products) to the GraphQL List Type (GistGraphType)
             Field<ListGraphType<ProductType>>(Name = "ProductsList", resolve: x => productProvider.GetProducts());
+
+            //This returns a product by Id
+            Field<ProductType>(Name = "ProductById",
+               arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "Id" }),
+               resolve: x => productProvider.GetProducts().Where(p => p.Id == x.GetArgument<int>("Id")).FirstOrDefault()); //.FirstOrDefault(p => p.Id == x.GetArgument<int>("Id")));
         }
       
     }

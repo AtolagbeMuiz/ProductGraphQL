@@ -1,3 +1,4 @@
+global using GraphQL;
 global using GraphQL.Types;
 using GraphQL.Server;
 using Microsoft.AspNetCore.Mvc;
