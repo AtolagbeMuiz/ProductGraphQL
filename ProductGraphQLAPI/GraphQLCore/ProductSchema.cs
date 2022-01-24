@@ -1,4 +1,6 @@
-﻿namespace ProductGraphQLAPI.Models
+﻿using ProductGraphQLAPI.GraphQLCore.Mutation;
+
+namespace ProductGraphQLAPI.GraphQLCore
 {
     public class ProductSchema : Schema
     {
@@ -10,6 +12,8 @@
         public ProductSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             Query = serviceProvider.GetRequiredService<ProductQuery>();
+
+            Mutation = serviceProvider.GetRequiredService<ProductMutation>();
         }
     }
 }

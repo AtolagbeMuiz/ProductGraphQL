@@ -1,8 +1,10 @@
 global using GraphQL;
 global using GraphQL.Types;
+global using ProductGraphQLAPI.Models;
+global using ProductGraphQLAPI.GraphQLCore;
 using GraphQL.Server;
 using Microsoft.AspNetCore.Mvc;
-using ProductGraphQLAPI.Models;
+using ProductGraphQLAPI.GraphQLCore.Mutation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,10 +16,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProductProvider, ProductProvider>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddTransient<ISchema, ProductSchema>();
+
+//Query Dependencies
 builder.Services.AddTransient<ProductType>();
 builder.Services.AddTransient<ProductQuery>();
+
+//Mutation Dependencies
+builder.Services.AddTransient<ProductInput>();
+builder.Services.AddTransient<ProductMutation>();
+
 builder.Services.AddGraphQL(opt => opt.EnableMetrics = false).AddSystemTextJson();
 //builder.Services.AddGraphQL().AddSystemTextJson().AddSchema<ProductSchema>();
 

@@ -1,5 +1,4 @@
-﻿
-namespace ProductGraphQLAPI.Models
+﻿namespace ProductGraphQLAPI.GraphQLCore
 {
     public class ProductQuery : ObjectGraphType
     {
@@ -15,7 +14,7 @@ namespace ProductGraphQLAPI.Models
             Field<ListGraphType<ProductType>>(Name = "ProductsList", resolve: x => productProvider.GetProducts());
 
             //This returns a product by Id
-            Field<ProductType>(Name = "ProductById",
+           Field<ProductType>(Name = "ProductById",
                arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "Id" }),
                resolve: x => productProvider.GetProducts().Where(p => p.Id == x.GetArgument<int>("Id")).FirstOrDefault()); //.FirstOrDefault(p => p.Id == x.GetArgument<int>("Id")));
         }

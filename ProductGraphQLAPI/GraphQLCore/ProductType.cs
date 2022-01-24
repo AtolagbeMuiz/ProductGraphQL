@@ -1,4 +1,4 @@
-﻿namespace ProductGraphQLAPI.Models
+﻿namespace ProductGraphQLAPI.GraphQLCore
 {
     public class ProductType : ObjectGraphType<Product>
     {

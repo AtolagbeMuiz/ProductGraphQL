@@ -19,16 +19,27 @@ public record Product(int Id, string Name, int Quantity);
 public  interface IProductProvider
 {
     Product[] GetProducts();
+    Product CreateProduct(Product product);
 }
 
 public class ProductProvider : IProductProvider
 {
-    public Product[] GetProducts() => new[]
-    {
-        new Product(1, "Laptop", 20),
-        new Product(2, "Mouse", 30),
-        new Product(3, "Keyboard", 10),
-        new Product(4, "Monitor", 40)
+    private readonly IProductRepository _productRepo;
 
-    };
+    public ProductProvider(IProductRepository productRepo)
+    {
+        this._productRepo = productRepo;
+    }
+
+    //This method calls the Get method in the Productrepository that returns all the products stored in-memory
+    public Product[] GetProducts() =>
+        _productRepo.Get().ToArray();
+
+
+    public Product CreateProduct(Product product)
+    {
+        _productRepo.Create(product);
+        return product;
+    }
+
 }
