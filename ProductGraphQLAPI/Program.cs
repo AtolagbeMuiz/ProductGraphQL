@@ -2,6 +2,7 @@ global using GraphQL;
 global using GraphQL.Types;
 global using ProductGraphQLAPI.Models;
 global using ProductGraphQLAPI.GraphQLCore;
+global using ProductGraphQLAPI.GraphQLCore.Query;
 using GraphQL.Server;
 using Microsoft.AspNetCore.Mvc;
 using ProductGraphQLAPI.GraphQLCore.Mutation;

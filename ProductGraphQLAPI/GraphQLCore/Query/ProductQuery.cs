@@ -1,4 +1,4 @@
-﻿namespace ProductGraphQLAPI.GraphQLCore
+﻿namespace ProductGraphQLAPI.GraphQLCore.Query
 {
     public class ProductQuery : ObjectGraphType
     {
