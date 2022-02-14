@@ -16,18 +16,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IProductProvider, ProductProvider>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<IProductProvider, ProductProvider>();
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 
-builder.Services.AddTransient<ISchema, ProductSchema>();
+builder.Services.AddSingleton<ISchema, ProductSchema>();
 
 //Query Dependencies
-builder.Services.AddTransient<ProductType>();
-builder.Services.AddTransient<ProductQuery>();
+builder.Services.AddSingleton<ProductType>();
+builder.Services.AddSingleton<ProductQuery>();
 
 //Mutation Dependencies
-builder.Services.AddTransient<ProductInput>();
-builder.Services.AddTransient<ProductMutation>();
+builder.Services.AddSingleton<ProductInput>();
+builder.Services.AddSingleton<ProductMutation>();
 
 builder.Services.AddGraphQL(opt => opt.EnableMetrics = false).AddSystemTextJson();
 //builder.Services.AddGraphQL().AddSystemTextJson().AddSchema<ProductSchema>();

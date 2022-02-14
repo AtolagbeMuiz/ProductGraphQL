@@ -10,7 +10,7 @@
         public ProductQuery(IProductProvider productProvider)
         {
             //This returns a List of ProductType 
-            //the "resolve" helps in resolving/casting the custom type returned(Array of Products) to the GraphQL List Type (GistGraphType)
+            //the "resolve" helps in resolving/casting the custom type returned(Array of Products) to the GraphQL List Type (ListGraphType)
             Field<ListGraphType<ProductType>>(Name = "ProductsList", resolve: x => productProvider.GetProducts());
 
             //This returns a product by Id
