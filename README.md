@@ -6,3 +6,6 @@ This Project uses the Minimal API structure to route HTTP request to the Impleme
 
 ## Screenshot of GraphQL query run on the GrapghQL UI Playground to return lists of all products
 ![](ProductGraphQLAPI/Images/Capture.PNG)
+
+## Screenshot of GraphQL query run on the GrapghQL UI Playground to return product by Id
+![](ProductGraphQLAPI/Images/Capture%202.PNG)
